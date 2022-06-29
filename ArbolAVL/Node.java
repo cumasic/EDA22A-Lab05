@@ -2,11 +2,11 @@ package ArbolAVL;
 
 public class Node<E extends Comparable<E>> {
     protected E data;
-    protected Node left;
-    protected Node right;
+    protected Node<E> left;
+    protected Node<E> right;
     protected int fb;
     
-    public Node(E data,Node left,Node right) {
+    public Node(E data,Node<E> left,Node<E> right) {
         this.data = data;
         this.left = left;
         this.right = right;
@@ -21,16 +21,16 @@ public class Node<E extends Comparable<E>> {
     public void setData(E data) {
         this.data = data;
     }
-    public Node getLeft(){
+    public Node<E> getLeft(){
         return this.left;
     }
-    public void setLeft(Node left) {
+    public void setLeft(Node<E> left) {
         this.left = left;
     }
-    public Node getRight(){
+    public Node<E> getRight(){
         return this.right;
     }
-    public void setNext(Node right) {
+    public void setNext(Node<E> right) {
         this.right = right;
     }
     public String toString() {
