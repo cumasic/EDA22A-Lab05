@@ -112,7 +112,14 @@ public class AVL<E extends Comparable<E>> {
 		return resp.data;
     }
     public Node<E> searchRec(E x,Node<E> actual) throws ItemNotFound {
-        return null;
+        if (actual == null)
+			return null;
+		else {
+			int resC = actual.data.compareTo(x);
+			if(resC < 0) return searchRec(x,actual.right);
+			else if(resC > 0) return searchRec(x,actual.left);
+			else return actual;
+		}
     }
 
     public void remove(E x) {	
