@@ -11,11 +11,8 @@ public class Test {
             System.out.println(b);
             b.remove(100);
             System.out.println(b);
-            b.search(100);
+            System.out.println(b.search(200));
             System.out.println(b);
-            b.search(200);
-            System.out.println(b);
-            
         }
         catch(Exception x){
             System.out.println(x.getMessage());
