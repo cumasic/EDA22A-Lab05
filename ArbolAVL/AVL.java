@@ -169,6 +169,12 @@ public class AVL<E extends Comparable<E>> {
 	}
 	
 	private String postOrden(Node<E> current) {
-		return null;
+		String str ="";
+		if(current.left != null)
+			str += postOrden(current.left);
+		if(current.right != null)
+			str += postOrden(current.right);
+		str += current.data.toString() + ", ";
+		return str;
 	}
 }
