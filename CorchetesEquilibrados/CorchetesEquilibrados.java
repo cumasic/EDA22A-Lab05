@@ -13,7 +13,19 @@ public class CorchetesEquilibrados {
 
     }
     public static boolean isBalanced(String a){
-        
-        return true;
+        boolean cond=false;
+		if(a.length()%2!=0)
+			return cond;
+		for(int i=0;i<a.length()/2;i++) {
+			if(a.substring(i,i+1).equals("[") && a.substring(a.length()-1,a.length()).equals("]")) 
+				cond = true;
+			else if(a.substring(i,i+1).equals("(") && a.substring(a.length()-1,a.length()).equals(")")) 
+				cond = true;
+			else if(a.substring(i,i+1).equals("{") && a.substring(a.length()-1,a.length()).equals("}")) 
+				cond = true;
+			else 
+				cond = false;	
+		}
+		return cond;
     }
 }
