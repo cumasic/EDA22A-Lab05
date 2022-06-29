@@ -122,7 +122,11 @@ public class AVL<E extends Comparable<E>> {
 		}
     }
 
-    public void remove(E x) {	
+    public void remove(E x) throws ItemNotFound{
+        this.root = removeNode(x, this.root);	
+    }
+    private Node<E> removeNode(E x, Node<E> actual) throws ItemNotFound {
+        return null;
     }
     public String toString() {
         return null;
