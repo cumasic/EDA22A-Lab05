@@ -126,8 +126,41 @@ public class AVL<E extends Comparable<E>> {
         this.root = removeNode(x, this.root);	
     }
     private Node<E> removeNode(E x, Node<E> actual) throws ItemNotFound {
-        return null;
+        Node<E> res = actual;
+		if (actual == null) //Caso por si no hay coincidencia
+			throw new ItemNotFound("El dato "+x+ "no se encuentra...");
+		else {
+			int resC = actual.data.compareTo(x);
+			if (resC < 0) //Caso para ir al nodo derecho
+				res.right = removeNode(x, actual.right);
+			else if (resC > 0) //Caso para ir al nodo izquierdo
+				res.left = removeNode(x, actual.left);
+			else {// Caso por si tiene 2 hijos
+				if(actual.left != null && actual.right != null){
+					actual.data = minRecover(actual.right).data;
+					actual.right = minRemove(actual.right);
+				}
+				else {
+					res = (actual.left != null) ? actual.left : actual.right;
+				}
+			}	
+		}
+		return res;
     }
+    protected Node<E> minRemove(Node<E> actual) {
+		if (actual.left != null)
+			actual.left = minRemove(actual.left);
+		else
+			actual = actual.right;
+		return actual;
+	}
+	
+	protected Node<E> minRecover(Node<E> actual) {
+		if (actual.left != null)
+			return minRecover(actual.left);
+		else
+			return actual;
+	}
     public String toString() {
         return null;
     }
