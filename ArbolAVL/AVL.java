@@ -37,14 +37,41 @@ public class AVL<E extends Comparable<E>> {
 					}
 				}
             else {
-                 
-            }
-            
+                res.left = insertRec(x, current.left);
+				if (this.height) {
+					switch(res.fb) {
+					case -1 : res.fb = 0; this.height = false; break;
+					case 0 : res.fb = 1; this.height = true; break;
+					case 1 : res.fb = 2;
+							 res = balanceToRight(res);
+							 this.height = false;
+					}
+				} 
+            }  
         }
-
-        return null;
+        return res;
 
     }
+    private Node<E> balanceToRight(Node<E> node) {
+		Node<E> son = node.left;
+		switch(son.fb) {
+		case 1 : node.fb = 0;
+				 son.fb = 0;
+				 node = rotateSL(node);
+				 break;
+		case -1 : Node<E> grandson = son.right;
+				  switch(grandson.fb) {
+				  case -1 : node.fb = 0; son.fb = -1; break;
+				  case 0 : node.fb = 0; son.fb = 0; break;
+				  case 1 : node.fb = 1; son.fb = 0; break;
+				  }
+				  node.left = rotateSL(son);
+				  node = rotateSR(node);
+				  break;
+		case 0 :
+		}
+		return node;
+	}
     private Node<E> balanceToLeft(Node<E> node) {
         Node<E> son = node.right;
 		switch(son.fb) {
