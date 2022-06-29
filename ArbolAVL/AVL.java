@@ -105,9 +105,16 @@ public class AVL<E extends Comparable<E>> {
 		node = son;
 		return node;
 	} 
-    public E search(E x) {
+    public E search(E x) throws ItemNotFound {
+        Node<E> resp = searchRec(x,this.root);
+		if(resp == null) 
+			throw new ItemNotFound("El dato "+x+" no se encuentra...");
+		return resp.data;
+    }
+    public Node<E> searchRec(E x,Node<E> actual) throws ItemNotFound {
         return null;
     }
+
     public void remove(E x) {	
     }
     public String toString() {
