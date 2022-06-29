@@ -161,7 +161,14 @@ public class AVL<E extends Comparable<E>> {
 		else
 			return actual;
 	}
+
     public String toString() {
-        return null;
-    }
+		if(isEmpty())
+			return "Arbol vacio...";
+		return postOrden(this.root);
+	}
+	
+	private String postOrden(Node<E> current) {
+		return null;
+	}
 }
