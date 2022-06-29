@@ -9,8 +9,19 @@ public class AVL<E extends Comparable<E>> {
 	public boolean isEmpty() {
 		return this.root == null;
 	}
-    public void insert(E x) {
+    public void insert(E x) throws ItemDuplicated{
+        this.height = false;
+		this.root = insertRec(x, this.root);
 	}
+    private Node<E> insertRec(E x,Node current) throws ItemDuplicated {
+        Node<E> res = current;
+        if (current == null) {//En Caso el árbol este vacio.
+			this.height = true;
+			res = new Node<E>(x);
+		}
+        return null;
+
+    }    
     public E search(E x) {
         return null;
     }
